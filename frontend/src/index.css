@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Craftwork Grotesk";
+  src: url("/fonts/CraftworkGrotesk-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Craftwork Grotesk";
+  src: url("/fonts/CraftworkGrotesk-SemiBold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Craftwork Grotesk";
+  src: url("/fonts/CraftworkGrotesk-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-primary: #151515;
+  --color-on-primary: #ffffff;
+  --color-secondary: #dff2fc;
+  --color-accent: #f5c928;
+
+  --color-background: #ffffff;
+  --color-surface: #f5f6f7;
+  --color-text: #151515;
+  --color-text-secondary: #62676e;
+  --color-border: #e2e4e7;
+
+  --gradient-hero: linear-gradient(
+    110deg,
+    #fff3e5 0%,
+    #f7f7f5 45%,
+    #dff2fc 100%
+  );
+
+  --font-craftwork: "Craftwork Grotesk", sans-serif;
+
+  --font-manrope: "Manrope", sans-serif;
+
+  --radius-card: 24px;
+  --radius-input: 12px;
+  --radius-button: 999px;
+}
+
+html, body {
+  margin: 0;
+}

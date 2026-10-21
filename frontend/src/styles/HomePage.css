@@ -1,0 +1,20 @@
+.hero {
+    background: var(--gradient-hero);
+    padding: 0.5rem 4rem;
+}
+
+.hero-content {
+    margin-top: 4rem;
+    font-family: var(--font-manrope);
+}
+
+.hero-content p {
+    color: var(--color-text-secondary);
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.hero-content span {
+    font-weight: 500;
+    font-size: 3rem;
+}

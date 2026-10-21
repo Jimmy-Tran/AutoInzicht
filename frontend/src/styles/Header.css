@@ -1,0 +1,29 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: var(--font-craftwork);
+    font-weight: 500;
+    align-items: center;
+}
+
+.header-container span {
+    font-size: 1.2rem;
+}
+
+.header-container a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: 0.8rem;
+    margin: 0.4rem;
+    letter-spacing: -0.6px;
+}
+
+.header-link__login {
+    background-color: black;
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-button);
+    padding: 0.75rem 1.5rem;
+}
