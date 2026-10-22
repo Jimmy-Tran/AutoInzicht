@@ -1,5 +1,6 @@
 import Header from '../components/layout/Header'
 import "../styles/HomePage.css"
+import PlateSearchForm from '../components/vehicle/PlateSearchForm'
 
 export default function HomePage() {
     return (
@@ -7,8 +8,14 @@ export default function HomePage() {
         <section className="hero">
             <Header />
             <div className="hero-content">
-                <span>Een helder beeld van<br/>je volgende auto.</span>
-                <p>Vul een kenteken in en ontdek wat je wilt weten<br/>voordat je koopt.</p>
+                <div className="hero-text">
+                    <span>Een helder beeld van<br/>je volgende auto.</span>
+                    <p>Vul een kenteken in en ontdek wat je wilt weten<br/>voordat je koopt.</p>
+                    <PlateSearchForm />
+                </div>
+                <div className="hero-image">
+                    <img src="../../images/vw-golf.jpeg" alt="AutoInzicht" />
+                </div>
             </div>
         </section>
         </>

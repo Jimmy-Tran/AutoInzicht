@@ -6,6 +6,11 @@
 .hero-content {
     margin-top: 4rem;
     font-family: var(--font-manrope);
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .hero-content p {
@@ -17,4 +22,13 @@
 .hero-content span {
     font-weight: 500;
     font-size: 3rem;
+}
+
+.hero-image img {
+    border-radius: var(--radius-card);
+}
+
+
+.hero-text {
+    width: 100%;
 }
