@@ -7,6 +7,7 @@
   box-sizing: border-box;
   border-radius: var(--radius-card, 24px);
   background: var(--color-background, #fff);
+  max-width: 60%;
 }
 
 .plate-search__label {
