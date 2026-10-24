@@ -5,6 +5,7 @@
 
 .hero-content {
     margin-top: 4rem;
+    margin-bottom: 4rem;
     font-family: var(--font-manrope);
     display: flex;
     flex-direction: row;
