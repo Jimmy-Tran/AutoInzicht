@@ -29,7 +29,7 @@ app.add_middleware(
 async def root():
     return {"Hello": "World"}
 
-@app.get("/vehicle/{vehicle_license_plate}")
+@app.get("/api/vehicle/{vehicle_license_plate}")
 async def get_vehicle_info(vehicle_license_plate: str):
     plate = vehicle_license_plate.upper().replace("-", "").replace(" ", "")
     rdw_app_token = os.getenv("RDW_APP_TOKEN")

@@ -1,11 +1,14 @@
 import { useState, type SubmitEvent } from "react";
 import "../../styles/PlateSearchForm.css";
+import { getVehicle, type Vehicle } from "../../services/vehicleApi";
 
 export default function PlateSearchForm() {
   const [plate, setPlate] = useState("");
   const [error, setError] = useState("");
+  const [vehicle, setVehicle] = useState<Vehicle | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const normalizedPlate = plate
@@ -18,7 +21,17 @@ export default function PlateSearchForm() {
     }
 
     setError("");
-    window.location.assign(`/vehicle/${normalizedPlate}`);
+    setVehicle(null);
+    setLoading(true);
+
+    try {
+      const result = await getVehicle(normalizedPlate);
+      setVehicle(result);
+    } catch {
+      setError("Kon de voertuiggegevens niet ophalen.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -61,10 +74,19 @@ export default function PlateSearchForm() {
         </p>
       )}
 
-      <button className="plate-search__button" type="submit">
-        Check kenteken
+      <button className="plate-search__button" type="submit" disabled={loading}>
+        {loading ? "Laden..." : "Check kenteken"}
         <span aria-hidden="true">→</span>
       </button>
+
+      {vehicle && (
+        <div className="plate-search__result" aria-live="polite">
+          <strong>
+            {vehicle.merk} {vehicle.handelsbenaming}
+          </strong>
+          <span>{vehicle.kenteken}</span>
+        </div>
+      )}
 
       <p id="plate-hint" className="plate-search__hint">
         Voertuiggegevens, gebruikskosten en aankoopadvies op één plek.
