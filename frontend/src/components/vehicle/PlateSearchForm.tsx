@@ -1,12 +1,13 @@
 import { useState, type SubmitEvent } from "react";
 import "../../styles/PlateSearchForm.css";
-import { getVehicle, type Vehicle } from "../../services/vehicleApi";
+import { useNavigate } from "react-router-dom";
 
 export default function PlateSearchForm() {
   const [plate, setPlate] = useState("");
   const [error, setError] = useState("");
-  const [vehicle, setVehicle] = useState<Vehicle | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -16,22 +17,12 @@ export default function PlateSearchForm() {
       .replace(/[\s-]/g, "");
 
     if (!/^[A-Z0-9]{6}$/.test(normalizedPlate)) {
-      setError("Vul een kenteken van 6 letters en cijfers in.");
+      setError("Kenteken is onjuiste formaat.");
       return;
     }
-
-    setError("");
-    setVehicle(null);
+    
     setLoading(true);
-
-    try {
-      const result = await getVehicle(normalizedPlate);
-      setVehicle(result);
-    } catch {
-      setError("Kon de voertuiggegevens niet ophalen.");
-    } finally {
-      setLoading(false);
-    }
+    navigate(`/vehicle/${normalizedPlate}`);
   }
 
   return (
@@ -78,15 +69,6 @@ export default function PlateSearchForm() {
         {loading ? "Laden..." : "Check kenteken"}
         <span aria-hidden="true">→</span>
       </button>
-
-      {vehicle && (
-        <div className="plate-search__result" aria-live="polite">
-          <strong>
-            {vehicle.merk} {vehicle.handelsbenaming}
-          </strong>
-          <span>{vehicle.kenteken}</span>
-        </div>
-      )}
 
       <p id="plate-hint" className="plate-search__hint">
         Voertuiggegevens, gebruikskosten en aankoopadvies op één plek.

@@ -1,0 +1,96 @@
+.vehicle-page {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  padding: 1rem;
+}
+
+.vehicle-image {
+  max-width: 50%;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.vehicle-info{ 
+  width: 100%;
+}
+
+.license-plate {
+  display: flex;
+  max-width: 300px;
+  width: auto;
+  overflow: hidden;
+  border: 3px solid #171717;
+  border-radius: 0.7rem;
+  background: #f5c928;
+  box-shadow: 0 7px 0 rgb(21 21 21 / 16%), 0 18px 30px rgb(21 21 21 / 12%);
+  box-sizing: border-box;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.license-plate__country {
+  display: flex;
+  flex: 0 0 13%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.35rem;
+  background: #0647a8;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.license-plate__stars {
+  color: #ffd800;
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  letter-spacing: 0.04em;
+}
+
+.license-plate__nl {
+  font-family: Arial, sans-serif;
+  font-size: clamp(0.8rem, 2.5vw, 0.3rem);
+  font-weight: 700;
+}
+
+.license-plate__number {
+  display: flex;
+  flex: 0;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-family: Arial, sans-serif;
+  font-size: clamp(2rem, 8vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-indent: 0.12em;
+  text-transform: uppercase;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.vehicle-details {
+  gap: 1rem;
+  font-family: var(--font-manrope);
+}
+
+.vehicle-details h2, p {
+  margin: 0;
+}
+
+.vehicle-details h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+}
+
+.vehicle-details p {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 500;
+  color: rgb(49, 49, 49);
+}

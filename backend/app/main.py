@@ -41,6 +41,7 @@ async def get_vehicle_info(vehicle_license_plate: str):
         )
 
     api_url = "https://opendata.rdw.nl/api/v3/views/m9d7-ebf2/query.json"
+    
     params = {
         "query": f"SELECT * WHERE kenteken = '{plate}'",
         "pageNumber": 1,
@@ -65,3 +66,65 @@ async def get_vehicle_info(vehicle_license_plate: str):
         )
 
     return {"vehicle_license_plate": plate, "info": data[0]}
+
+@app.get("/api/vehiclefueltype/{vehicle_license_plate}")
+async def get_vehicle_info(vehicle_license_plate: str):
+    plate = vehicle_license_plate.upper().replace("-", "").replace(" ", "")
+
+    api_url = f"https://opendata.rdw.nl/resource/8ys7-d773.json"
+
+    params = {
+        "kenteken": plate
+    }
+
+    async with httpx.AsyncClient() as client:
+        response = await client.get(api_url, params=params)
+
+    if response.status_code != 200:
+        raise HTTPException(
+            status_code=502,
+            detail=f"RDW request failed with status {response.status_code}",
+        )
+
+    data = response.json()
+    if not data:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No vehicle found for license plate {plate}",
+        )
+
+    return {"vehicle_license_plate": plate, "info": data[0]}
+
+@app.get("/api/vehiclegearbox")
+async def get_gearbox(
+    typegoedkeuringsnummer: str,
+    variant: str,
+    uitvoering: str
+):
+
+    api_url = f"https://opendata.rdw.nl/resource/7rjk-eycs.json"
+
+    params = {
+        "typegoedkeuringsnummer": typegoedkeuringsnummer,
+        "codevarianttgk": variant,
+        "codeuitvoeringtgk": uitvoering,
+        "$limit": 1
+    }
+
+    async with httpx.AsyncClient() as client:
+        response = await client.get(api_url, params=params)
+
+    if response.status_code != 200:
+        raise HTTPException(
+            status_code=502,
+            detail=f"RDW request failed with status {response.status_code}",
+        )
+
+    data = response.json()
+    if not data:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No vehicle gearbox information found",
+        )
+
+    return {"info": data[0]}
