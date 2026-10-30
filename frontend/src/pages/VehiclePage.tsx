@@ -1,11 +1,13 @@
 import Header from '../components/layout/Header'
 import Cards from '../components/vehicle/Cards'
+import VehicleStats from '../components/vehicle/VehicleStats'
 import { useParams } from 'react-router-dom'
 import {
     getVehicle,
     getVehicleFuelType,
     capitalizeFirstLetter,
     getGearbox,
+    getTransmissionType,
     type Vehicle,
     type VehicleFuelType,
     type VehicleGearbox
@@ -73,7 +75,7 @@ export default function VehiclePage() {
             console.log('Vehicle data:', vehicle);
             console.log('Vehicle fuel type data:', vehicleFuelType);
             console.log('Vehicle gearbox data:', gearbox);
-            })
+            }, [vehicle, vehicleFuelType, gearbox]);
 
     return(
         <>
@@ -94,16 +96,26 @@ export default function VehiclePage() {
                                 </span>
                     </div>
                     {loading && <p>Loading...</p>}
-                    {!loading && !error && vehicle && vehicleFuelType && (
+                    {!loading && !error && vehicle && vehicleFuelType && gearbox && (
+                        <>
                         <div className="vehicle-details">
-                            <h2>{capitalizeFirstLetter(vehicle.handelsbenaming || 'Onbekend')}</h2>
-                            <p>{capitalizeFirstLetter(vehicle.eerste_kleur || 'Onbekend')}</p>
+                            <div>
+                                <h2>{capitalizeFirstLetter(vehicle.merk + ' ' + vehicle.handelsbenaming || 'Onbekend')}</h2>
+                                <p>{capitalizeFirstLetter(vehicle.eerste_kleur || 'Onbekend')}</p>
+                            </div>
                             <Cards 
-                                vehicleType={vehicle.inrichting || 'Onbekend'}
+
+                                vehicleType={capitalizeFirstLetter(vehicle.inrichting || 'Onbekend')}
                                 fuelType={vehicleFuelType.brandstof_omschrijving || 'Onbekend'}
-                                transmission={vehicleFuelType.uitlaatemissieniveau || 'Onbekend'}
+                                transmission={getTransmissionType(gearbox.codetypeversnellingsbak)}
                             />
                         </div>
+                        <VehicleStats 
+                            datum_eerste_toelating_dt={vehicle.datum_eerste_toelating_dt}
+                            aantal_zitplaatsen={vehicle.aantal_zitplaatsen}
+                            wam_verzekerd={vehicle.wam_verzekerd}
+                        />
+                        </>
                     )}
                     {!loading && error && <p>{error}</p>}
                 </div>

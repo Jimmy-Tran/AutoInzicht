@@ -8,8 +8,8 @@ export type Vehicle = {
   vervaldatum_apk_dt: string | null;
 
   eerste_kleur: string | null;
-  aantal_zitplaatsen: number | null;
-  aantal_deuren: number | null;
+  aantal_zitplaatsen: string | null;
+  aantal_deuren: string | null;
   inrichting: string | null;
 
   aantal_cilinders: number | null;
@@ -20,7 +20,7 @@ export type Vehicle = {
 
   tellerstandoordeel: string | null;
   openstaande_terugroepactie_indicator: boolean | null;
-  wam_verzekerd: boolean | null;
+  wam_verzekerd: string | null;
   typegoedkeuringsnummer: string;
   variant: string;
   uitvoering: string;
@@ -114,7 +114,20 @@ export async function getGearbox(typegoedkeuringsnummer: string, variant: string
   return data.info;
 }
 
- 
+export function getTransmissionType(codetypeversnellingsbak: string): string {
+    switch (codetypeversnellingsbak) {
+        case "A":
+            return "Automaat";
+        case "D":
+            return "Automaat (Dubbele Koppeling / DSG)";
+        case "C":
+            return "'Continu Variabel (CVT)";
+        case "CVT":
+            return "Continu Variabel (CVT)";
+        default:
+            return "Handgeschakeld";
+    }
+}
 
 export function capitalizeFirstLetter(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();

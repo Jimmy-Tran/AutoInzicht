@@ -1,0 +1,55 @@
+.vehicle-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    width: 100%;
+    margin-top: 28px;
+    font-family: var(--font-manrope);
+}
+
+.vehicle-stats__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 20px;
+    border-right: 1px solid rgba(100, 116, 139, 0.2);
+    min-width: 0;
+}
+
+.vehicle-stats__item:first-child {
+    padding-left: 4px;
+}
+
+.vehicle-stats__item:last-child {
+    border-right: none;
+}
+
+.vehicle-stats__value {
+    color: #0f172a;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.vehicle-stats__label {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .vehicle-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 20px;
+    }
+
+    .vehicle-stats__item:nth-child(2) {
+        border-right: none;
+    }
+
+    .vehicle-stats__item:nth-child(3) {
+        padding-left: 4px;
+    }
+}
