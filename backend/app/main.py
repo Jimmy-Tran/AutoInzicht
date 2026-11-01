@@ -49,7 +49,9 @@ async def get_vehicle_info(vehicle_license_plate: str):
         "app_token": rdw_app_token,
     }
 
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(
+        timeout=httpx.Timeout(15.0, connect=5.0)
+    ) as client:
         response = await client.get(api_url, params=params)
 
     if response.status_code != 200:

@@ -1,0 +1,61 @@
+.vehicle-tabs {
+    width: 100%;
+    margin-top: 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.vehicle-tabs__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+.vehicle-tabs__button {
+    position: relative;
+    padding: 14px 12px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+
+.vehicle-tabs__button:hover {
+    color: #2563eb;
+}
+
+.vehicle-tabs__button--active {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.vehicle-tabs__button--active::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: #2563eb;
+    content: '';
+}
+
+.vehicle-tabs__header {
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 600px) {
+    .vehicle-tabs__list {
+        gap: 0;
+        overflow-x: auto;
+    }
+
+    .vehicle-tabs__button {
+        flex-shrink: 0;
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+}

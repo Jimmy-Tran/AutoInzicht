@@ -1,5 +1,8 @@
-.hero {
+body {
     background: var(--gradient-hero);
+}
+
+.hero {
     padding: 0.5rem 4rem;
 }
 

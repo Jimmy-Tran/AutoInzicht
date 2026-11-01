@@ -1,29 +1,55 @@
 export type Vehicle = {
-  kenteken: string | null;
-  merk: string | null;
-  handelsbenaming: string | null;
-  voertuigsoort: string | null;
+    kenteken: string | null;
+    merk: string | null;
+    handelsbenaming: string | null;
+    voertuigsoort: string | null;
 
-  datum_eerste_toelating_dt: string | null;
-  vervaldatum_apk_dt: string | null;
+    type: string | null;
+    typegoedkeuringsnummer: string | null;
+    variant: string | null;
+    uitvoering: string | null;
+    volgnummer_wijziging_eu_typegoedkeuring: string | null;
 
-  eerste_kleur: string | null;
-  aantal_zitplaatsen: string | null;
-  aantal_deuren: string | null;
-  inrichting: string | null;
+    datum_eerste_toelating_dt: string | null;
+    datum_eerste_tenaamstelling_in_nederland_dt: string | null;
+    datum_tenaamstelling_dt: string | null;
+    vervaldatum_apk_dt: string | null;
 
-  aantal_cilinders: number | null;
-  cilinderinhoud: number | null;
+    eerste_kleur: string;
+    tweede_kleur: string;
+    inrichting: string;
+    aantal_zitplaatsen: string;
+    aantal_deuren: string;
+    aantal_wielen: string;
+    wielbasis: string;
 
-  massa_ledig_voertuig: number | null;
-  massa_rijklaar: number | null;
+    aantal_cilinders: string;
+    cilinderinhoud: string;
+    vermogen_massarijklaar: string;
 
-  tellerstandoordeel: string | null;
-  openstaande_terugroepactie_indicator: boolean | null;
-  wam_verzekerd: string | null;
-  typegoedkeuringsnummer: string;
-  variant: string;
-  uitvoering: string;
+    massa_ledig_voertuig: string;
+    massa_rijklaar: string;
+    technische_max_massa_voertuig: string;
+    toegestane_maximum_massa_voertuig: string;
+    maximum_massa_samenstelling: string;
+    maximum_trekken_massa_geremd: string;
+    maximum_massa_trekken_ongeremd: string;
+
+    bruto_bpm: string;
+    europese_voertuigcategorie: string | null;
+    zuinigheidsclassificatie: string | null;
+    export_indicator: string | null;
+    taxi_indicator: string | null;
+    tenaamstellen_mogelijk: string | null;
+    wacht_op_keuren: string | null;
+
+    openstaande_terugroepactie_indicator: string | null;
+    wam_verzekerd: string | null;
+
+    tellerstandoordeel: string | null;
+    code_toelichting_tellerstandoordeel: string | null;
+    jaar_laatste_registratie_tellerstand: string;
+    plaats_chassisnummer: string | null;
 };
 
 export type VehicleFuelType = {

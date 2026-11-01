@@ -14,6 +14,7 @@ import {
 } from '../services/vehicleApi'
 import { useEffect, useState } from 'react';
 import '../styles/VehiclePage.css';
+import VehicleTabs from '../components/vehicle/VehicleTabs';
 
 export default function VehiclePage() {
     const { license } = useParams<{ license: string }>();
@@ -120,6 +121,9 @@ export default function VehiclePage() {
                     {!loading && error && <p>{error}</p>}
                 </div>
             </main>
+            {!loading && !error && vehicle && (
+                <VehicleTabs vehicle={vehicle} />
+            )}  
         </section>
         </>
     )

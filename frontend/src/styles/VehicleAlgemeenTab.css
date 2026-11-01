@@ -1,0 +1,122 @@
+.vehicle-overview {
+    width: 100%;
+    font-family: var(--font-manrope);
+}
+
+.vehicle-overview__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.vehicle-info-card {
+    min-width: 0;
+    padding: 20px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.68);
+    box-shadow: 0 3px 12px rgba(24, 48, 80, 0.025);
+}
+
+.vehicle-info-card__header {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 18px;
+}
+
+.vehicle-info-card__icon {
+    display: flex;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    color: #0866ff;
+    background: #edf3ff;
+}
+
+.vehicle-info-card__header h3 {
+    margin: 0;
+    color: #101b33;
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.4;
+}
+
+.vehicle-info-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.vehicle-card__main-value {
+    color: #101b33;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.vehicle-data-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vehicle-data-item__label {
+    color: #607491;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.vehicle-data-item__value {
+    color: #101b33;
+    font-size: 16px;
+    font-weight: 650;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.vehicle-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 11px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.vehicle-status--valid {
+    color: #07852e;
+    background: #e3f9e9;
+}
+
+.vehicle-status--expired {
+    color: #bd2525;
+    background: #ffebeb;
+}
+
+.vehicle-status--unknown {
+    color: #667085;
+    background: #edf0f4;
+}
+
+@media (max-width: 1000px) {
+    .vehicle-overview__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .vehicle-overview__grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .vehicle-info-card {
+        padding: 18px;
+    }
+}
