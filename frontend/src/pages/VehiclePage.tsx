@@ -73,7 +73,7 @@ export default function VehiclePage() {
     }, [license]);
 
                 useEffect(() => {
-            console.log('Vehicle data:', vehicle);
+            console.log('Vehicle data:', vehicle, 'Vehicle image URL:', vehicle?.image_url);
             console.log('Vehicle fuel type data:', vehicleFuelType);
             console.log('Vehicle gearbox data:', gearbox);
             }, [vehicle, vehicleFuelType, gearbox]);
@@ -84,7 +84,12 @@ export default function VehiclePage() {
             <Header />
             <main className="vehicle-page">
                 <div className="vehicle-image">
-                    <img src="../../images/car-placeholder.png" alt="Voertuig" />
+                    {!loading && !error && vehicle && vehicle.image_url && (
+                        <img src={vehicle.image_url} alt={`Voertuig ${license}`} />
+                    )}
+                    {!loading && !error && vehicle && !vehicle.image_url && (
+                        <img src="../../images/car-placeholder.png" alt="Voertuig" />
+                    )}
                 </div>
                 <div className="vehicle-info">
                     <div className="license-plate" aria-label={`Kenteken ${license}`}>

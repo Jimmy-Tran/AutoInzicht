@@ -50,6 +50,13 @@ export type Vehicle = {
     code_toelichting_tellerstandoordeel: string | null;
     jaar_laatste_registratie_tellerstand: string;
     plaats_chassisnummer: string | null;
+    image_url: string | null;
+};
+
+type VehicleApiResponse = {
+    vehicle_license_plate: string;
+    info: Omit<Vehicle, "image_url">;
+    image_url: string | null;
 };
 
 export type VehicleFuelType = {
@@ -65,29 +72,33 @@ export type VehicleGearbox = {
 
 const apiUrl = import.meta.env.VITE_API_URL ?? "http://127.0.0.1:8000";
 
-export async function getVehicle(plate: string, signal?: AbortSignal): Promise<Vehicle> {
+export async function getVehicle(
+    plate: string,
+    signal?: AbortSignal
+): Promise<Vehicle> {
     const normalizedPlate = plate
-      .toUpperCase()
-      .replace(/[\s-]/g, "");
+        .toUpperCase()
+        .replace(/[\s-]/g, "");
 
     if (!/^[A-Z0-9]{6}$/.test(normalizedPlate)) {
         throw new Error("Kenteken is onjuiste formaat.");
     }
-  
-  const response = await fetch(
-    `${apiUrl}/api/vehicle/${encodeURIComponent(normalizedPlate)}`,
-    {
-      signal
+
+    const response = await fetch(
+        `${apiUrl}/api/vehicle/${encodeURIComponent(normalizedPlate)}`,
+        { signal }
+    );
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch vehicle data for plate ${plate}`);
     }
-  );
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch vehicle data for plate ${plate}`);
-  }
+    const data: VehicleApiResponse = await response.json();
 
-  const data: { info: Vehicle } = await response.json();
-
-  return data.info;
+    return {
+        ...data.info,
+        image_url: data.image_url,
+    };
 }
 
 export async function getVehicleFuelType(plate: string, signal?: AbortSignal): Promise<VehicleFuelType> {
