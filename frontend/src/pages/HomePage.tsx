@@ -1,6 +1,7 @@
 import Header from '../components/layout/Header'
 import "../styles/HomePage.css"
 import PlateSearchForm from '../components/vehicle/PlateSearchForm'
+import TrustBar from '../components/home/TrustBar'
 
 export default function HomePage() {
     return (
@@ -17,6 +18,7 @@ export default function HomePage() {
                     <img src="../../images/vw-golf.jpeg" alt="AutoInzicht" />
                 </div>
             </div>
+            <TrustBar />
         </section>
         </>
     )

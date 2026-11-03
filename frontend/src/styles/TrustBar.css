@@ -1,0 +1,29 @@
+.trust-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.trust-item {
+    font-size: 1.2rem;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-weight: 500;
+    padding: 0.5rem 8rem;
+    font-family: var(--font-manrope);
+}
+
+.trust-item svg {
+    color: #0866ff;
+}
+
+.trust-item:first-child {
+    border-right: 1px solid #ccc;
+}
+
+.trust-item:last-child {
+    border-left: 1px solid #ccc;
+}

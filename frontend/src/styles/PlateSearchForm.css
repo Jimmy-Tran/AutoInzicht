@@ -8,6 +8,7 @@
   border-radius: var(--radius-card, 24px);
   background: var(--color-background, #fff);
   max-width: 60%;
+  margin-top: 3rem;
 }
 
 .plate-search__label {
